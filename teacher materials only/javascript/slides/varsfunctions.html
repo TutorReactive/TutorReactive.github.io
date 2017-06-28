@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JS: Variables and Functions</title>
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black-translucent" name=
+    "apple-mobile-web-app-status-bar-style">
+    <meta content=
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+    name="viewport">
+    <link href="css/reveal.css" rel="stylesheet">
+    <link href="css/theme/blood.css" id="theme" rel="stylesheet">
+    <!-- Code syntax highlighting -->
+    <link href="lib/css/zenburn.css" rel="stylesheet">
+    <!-- Printing and PDF exports -->
+
+    <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <!-- Overview of learning objectives -->
+            <section>
+                <h1 style="font-size: 2em;">The Language of the
+                Web</h1><img class="center" src=
+                "http://dl.dropbox.com/u/10998095/Screenshots/2nwgi5~b8656.png">
+                <p>Also used for plug-in scripting (Adobe/Mozilla/Chrome), game
+                scripting, and <a href=
+                "http://en.wikipedia.org/wiki/JavaScript#Uses_outside_web_pages">
+                more</a>.</p>
+            </section><!-- Overview of learning objectives -->
+            <!-- JS Fundamentals -->
+            <section>
+                <ul>
+                    <li style="list-style: none; display: inline">
+                        <h1 style="font-size: 2em;">The History of
+                        JS</h1><img class="border" style="float:right;">
+                    </li>
+                    <li><b>1995:</b> At Netscape, Brendan Eich created
+                    "JavaScript".</li>
+                    <li><b>1996:</b> Microsoft releases "JScript", a port for
+                    IE3.</li>
+                    <li><b>1997:</b> JavaScript was standardized in the
+                    "ECMAScript" spec.</li>
+                    <li><b>2005:</b> "AJAX" was coined and the web 2.0 age
+                    begins.</li>
+                    <li><b>2006:</b> jQuery 1.0 was released.</li>
+                    <li><b>2010:</b> Node.JS was released.</li>
+                    <li><b>2015:</b> ECMAScript 6 was released.</li>
+                </ul>
+                <p class="speaker-notes" style="display:none">Made in 10 days.
+                Netscape + Sun marketing move to rename. Google Maps + GMail
+                make it quite popular.
+                http://www.oreillynet.com/pub/a/javascript/2001/04/06/js_history.html
+                We’ll use parts that are solid and have been around for a long
+                time</p>
+            </section><!-- JS Fundamentals -->
+            <!-- Arrays -->
+            <section>
+                <h1 style="font-size: 2em;">What can JS do?</h1>
+                <ul>
+                    <li>Image switchers and lightboxes</li>
+                    <li>Full featured web applications</li>
+                    <li>Keep track of users with cookies</li>
+                    <li>Interactive elements like tabs, sliders and
+                    accordions</li>
+                    <li>Drawing and animation <img class="border" src=
+                    "http://i.imgur.com/l0Qez2d.png" style="float:left"></li>
+                </ul>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Statements</h1>
+                <p>Each instruction in JS is a "statement", like:</p>
+                <pre>console.log('Hello World!');</pre>
+                <p>Try it on <a href="http://repl.it">repl.it</a>:</p><img src=
+                "http://dl.dropbox.com/u/10998095/Screenshots/j89bo0pzo02r.png">
+                <p class="speaker-notes" style="display:none;">Each separate
+                instruction in Javascript is called a 'statement'. A 'simple'
+                statement represents a single instruction and ends with a
+                semi-colon. You can think of a simple statement like a sentence
+                - the semi-colon is like a full stop and tells Javascript that
+                your statement is finished. Let's add a simple statement to our
+                script tags and see what happens...</p>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Variables</h1>
+                <p>Use variables to store values.</p>
+                <p>Declare, then initialize in 2 statements:</p>
+                <pre>
+    var x;
+    x = 5;
+    console.log(x);
+</pre>
+                <p>Or declare and initialize in one statement:</p>
+                <pre>
+    var y = 2;
+    console.log(y);
+</pre>
+                <p>Re-assign the value later:</p>
+                <pre>
+    var x = 5;
+    x = 1;
+</pre>
+                <p class="speaker-notes" style="display:none;">Variables are
+                one of the basic building blocks of Javascript. Just like 'x'
+                in algebra, a variable in programming is a named container for
+                a value that can change. Variables have to be 'declared' once
+                before being used, using the 'var' keyword and the name of the
+                variable. A variable declaration is a simple statement, so it
+                ends with a semi-colon. Assigning an initial value to a
+                variable is called 'initialising'. You can declare and
+                initialise in one go, or seperately. If its not assigned, it's
+                undefined.</p>
+            </section><!-- TODO runnable -->
+            <section>
+                <h1 style="font-size: 2em;">Primitive Data Types</h1>
+                <p style="display:none;">Variables can store different "types"
+                of data, like:</p>
+                <ul>
+                    <li>
+                        <b>string:</b> an immutable string of characters:
+                        <pre>
+    var greeting = 'Hello Kitty';
+    var restaurant = "Pamela's Place";
+</pre>
+                    </li>
+                    <li>
+                        <b>number:</b> whole (6, -102) or floating point
+                        (5.8737):
+                        <pre>
+    var myAge = 28;
+    var pi = 3.14;
+</pre>
+                    </li>
+                    <li>
+                        <b>boolean:</b> Represents logical values true or
+                        false:
+                        <pre>
+    var catsAreBest = true;
+    var dogsRule = false;
+</pre>
+                    </li>
+                    <li>
+                        <b>undefined:</b> Represents a value that hasn't been
+                        defined.
+                        <pre>
+    var notDefinedYet;
+</pre>
+                    </li>
+                    <li>
+                        <b>null:</b> Represents an explicitly empty value.
+                        <pre>
+    var goodPickupLines = null;
+</pre>
+                    </li>
+                </ul>
+                <p class="speaker-notes" style="display:none">Variables can be
+                populated with any one of the 'data types' available in
+                Javascript. These are the simple ones we'll be working with
+                today... There are also data types that cater for situations
+                where there is no value undefined and null. Loose typing- you
+                don't tell JS what type of data type it is, it guesses. You can
+                use typeof to see what it thinks.
+                http://www.daaq.net/old/javascript/index.php?page=js+data+types&parent=core+javascript</p>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Variable Names</h1>
+                <ul>
+                    <li>Begin with letters, $ or _</li>
+                    <li>Only contain letters, numbers, $ and _</li>
+                    <li>Case sensitive</li>
+                    <li>Avoid <a href=
+                    "https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words">
+                        reserved words</a>
+                    </li>
+                    <li>Choose clarity and meaning</li>
+                    <li>Prefer camelCase for multipleWords (instead of
+                    under_score)</li>
+                    <li>Pick a naming convention and stick with it</li>
+                </ul>OK:
+                <pre>
+    var numPeople, $mainHeader, _num, _Num;
+</pre>Not OK:
+                <pre>
+    var 2coolForSchool, soHappy!
+</pre>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Expressions</h1>
+                <p>Variables can also store the result of any "expression":</p>
+                <pre>
+    var x = 2 + 2;
+    var y = x * 3;
+</pre>
+                <pre>
+    var name = 'Claire';
+    var greeting = 'Hello ' + name;
+    var title = 'Baroness';
+    var formalGreeting = greeting + ', ' + title;
+</pre>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Loose Typing</h1>
+                <p>JS figures out the type based on value, and the type can
+                change:</p>
+                <pre>
+    var x;
+    x = 2;
+    x = 'Hi';
+</pre>
+                <p>A variable can only be of one type:</p>
+                <pre>
+    var y = 2 + ' cats';
+    console.log(typeof y);
+</pre>
+                <p class="speaker-notes" style="display:none">coercion</p>
+            </section><!-- /Arrays -->
+            <!-- Objects -->
+            <section>
+                <h1 style="font-size: 2em;">Comments</h1>
+                <p>Comments are human-readable text ignored by the
+                computer:</p>
+                <pre>
+    // You can write single-line comments
+    var x = 4; // Or you can comment after a statement
+
+    /* 
+    Or you can write multi-line comments, if you have something very long
+    to say like this gratuitously long description.
+    */
+</pre>
+                <p class="speaker-notes" style="display:none;">When to use
+                comments</p>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Functions</h1>
+                <p>Functions are re-usable collections of statements.</p>
+                <p>First declare the function:</p>
+                <pre>
+    function sayMyName() {
+        console.log('Hi Claire!');
+    }
+</pre>
+                <p>Then call it (as many times as you want):</p>
+                <pre>
+    sayMyName();
+</pre>
+                <p class="speaker-notes" style="display:none;">Alright! We can
+                declare a variable and write a statement - what next? A
+                function is collection of statements that work together to do
+                something. In the same way a statement is like a sentence, a
+                function is like a paragraph. Functions look like this... There
+                is no semi-colon at the end this time. That's because a
+                function declaration is 'compound' statement, or one that is
+                made up of other statements contained inside curly braces.
+                Functions are not run straight away, they are stored in memory
+                until they are called. We call a function like this... Side
+                effects.</p>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Beware: Circular Dependancies</h1>
+                <pre>
+    function chicken() {
+        egg();
+    }
+
+    function egg() {
+        chicken();
+    }
+
+    egg();
+
+</pre>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Arguments</h1>
+                <p>Functions can accept any number of named arguments:</p>
+                <pre>
+    function sayMyName(name) {
+        console.log('Hi, ' + name);
+    }
+
+    sayMyName('Claire');
+    sayMyName('Testy McTesterFace');
+</pre>
+                <pre>
+    function addNumbers(num1, num2) {
+        var result = num1 + num2;
+        console.log(result);
+    }
+
+    addNumbers(7, 21);
+    addNumbers(3, 10);
+</pre>
+                <p>You can also pass variables:</p>
+                <pre>
+    var number = 10;
+    addNumbers(number, 2);
+    addNumbers(number, 4);
+</pre>
+                <p class="speaker-notes" style="display:none;">Arguments
+                (sometimes called parameters) are values that are passed into a
+                function so it can do the same processing job for different
+                data inputs. We can name our arguments in the function
+                definition, inside the brackets, separated by commas. We can
+                then access them by name inside the function just like
+                variables... In the function call, we insert our argument
+                values in the brackets... PIRATE JOKE!!</p>
+            </section>
+
+            <section>
+                <h1 style="font-size: 2em;">Return Values</h1>
+                <p>The return keyword returns a value to whoever calls the
+                function (and exits the function):</p>
+                <pre>
+    function addNumbers(num1, num2) {
+        var result = num1 + num2;
+        return result; // Anything after this line won't be executed
+    }
+
+    var sum = addNumbers(5, 2);
+</pre>
+                <p>You can use function calls in expressions:</p>
+                <pre>
+    var biggerSum = addNumbers(2, 5) + addNumbers(3, 2);
+</pre>
+                <p>You can even call functions inside function calls:</p>
+                <pre>
+    var hugeSum = addNumbers(addNumbers(5, 2), addNumbers(3, 7));
+</pre>
+                <p class="speaker-notes" style="display:none;">Functions can be
+                used to do processing tasks, and they can also return a value
+                to the function caller. To do this we use the 'return' keyword.
+                'Return' also quits the function so it must always be the last
+                statement in your function. If we assign a function call to a
+                variable, it's value will be the result of running the
+                function, ie whatever is 'returned'. If there is no return
+                statement the variable's value will be 'undefined'.</p>
+            </section>
+            <section>
+                <h1 style="font-size: 2em;">Variable Scope</h1>
+                <p>JS Variables have "function scope". They are visible in the
+                function where they're defined:</p>
+                <p>A variable with "local" scope:</p>
+                <pre>
+    function addNumbers(num1, num2) {
+      var localResult = num1 + num2;
+      console.log("The local result is: " + localResult);
+    }
+    addNumbers(5, 7);
+    console.log(localResult);
+</pre>
+                <p>A variable with "global" scope:</p>
+                <pre>
+    var globalResult;
+    function addNumbers(num1, num2) {
+      globalResult = num1 + num2;
+      console.log("The global result is: " + globalResult);
+    }
+    addNumbers(5, 7);
+    console.log(globalResult);
+</pre>
+            </section>
+            <section>
+<h1 style="font-size: 2em;">Coding Conventions: Spacing</h1>
+                <p>Use newlines between statements and use spaces to show
+                    blocks.</p>
+                    <p>Bad:</p>
+                    <pre>
+    function addNumbers(num1,num2) {return num1 + num2;}
+
+<!--     function addNumbers(num1, num2) {
+        return num1 + num2;
+    } -->
+</pre>
+                    <p>Good:</p>
+                    <pre>
+    function addNumbers(num1, num2) {
+        return num1 + num2;
+    }
+</pre>
+            </section>
+
+
+            <section>
+                <h1 style="font-size: 2em;">Exercise Time!</h1>
+                <ul>
+                	<li>Do Exercise: Variables</li>
+                	<li>Do Exercise: Functions</li>
+<!--   					<li>Homework: The Calculator</li> -->
+<!--   					<li>Do the Exercise: Variables</li> -->
+                </ul>
+            </section><!-- /Objects -->
+            <!-- Arrays of Objects -->
+         
+            <section>
+                <h3>Closing Takeaways</h3>
+                <p>I learned _____ because of ____</p>
+                <p>Did you help anybody learn something new? Did someone help
+                you?</p>
+            </section><!-- Closing Takeaways -->
+            <section>
+                <h1 style="font-size: 1.8em;">End of JS Introduction!</h1>
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js">
+    </script> 
+    <script src="js/reveal.js">
+    </script> 
+    <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+    </script>
+</body>
+</html>

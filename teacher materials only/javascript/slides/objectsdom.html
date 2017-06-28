@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>JS: Variables and Functions</title>
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name=
+  "apple-mobile-web-app-status-bar-style">
+  <meta content=
+  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+  name="viewport">
+  <link href="css/reveal.css" rel="stylesheet">
+  <link href="css/theme/blood.css" id="theme" rel="stylesheet">
+  <!-- Code syntax highlighting -->
+  <link href="lib/css/zenburn.css" rel="stylesheet">
+  <!-- Printing and PDF exports -->
+
+  <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script><!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+
+
+    <div class="slides">
+      <!-- Overview of learning objectives -->
+
+
+      <section>
+        <h1 style="font-size: 2em;">JS Objects</h1>
+      </section>
+      <!-- Overview of learning objectives -->
+      <!-- JS Fundamentals -->
+
+
+      <section>
+        <h1 style="font-size: 2em;">Objects</h1>
+
+
+        <p>Objects are a data type that let us store a collection of properties
+        and methods.</p>
+
+        <pre class="prettyprint" style="border:3px dotted black;">
+var objectName = { 
+  propertyName: propertyValue,
+  propertyName: propertyValue,
+  ...
+};
+</pre>
+
+        <pre class="prettyprint">
+var aboutMe = {
+  hometown: "Pasadena, CA",
+  hair: "brown"
+}; 
+</pre>
+
+        <pre class="prettyprint">
+var lizzieTheCat = {
+  age: 18,
+  furColor: "grey",
+  likes: ["catnip", "milk"],
+  birthday: {"month": 7, "day": 17, year: 1994}
+};
+</pre>
+
+        <pre class="speaker-notes" style="display: none;">
+Javascript has a more complex data type called an 'object'. Objects allow us to describe an entity that has a complex structure, and more closely resembles something that exist in the real world.
+Arrays and functions are both special types of objects in Javascript. We can also define our own objects to represent complex data structures.
+Just like objects in the real world, Javascript objects have attributes - called 'properties', and things they can do - called 'methods'. For example, we can create an object that represents a dog in Javascript. It could have properties like 'colour' and 'breed', and methods like 'bark' and 'chaseCat'.
+</pre>
+      </section>
+      <!-- JS Fundamentals -->
+      <!-- Arrays -->
+
+
+      <section>
+        <h1 style="font-size: 2em;">Objects Access</h1>
+
+
+        <p>Access properties using "dot notation":</p>
+
+        <pre class="prettyprint">
+var aboutMe = {
+  hometown: "Pasadena, CA",
+  hair: "brown"
+}; 
+
+var myHometown = aboutMe.hometown;
+</pre>
+
+        <p>Or using "bracket notation" (like arrays):</p>
+
+        <pre class="prettyprint">
+var myHair = aboutMe["hair"];
+</pre>
+
+        <p>Non-existent properties will return undefined:</p>
+
+        <pre class="prettyprint">
+var myGender = aboutMe["gender"];
+</pre>
+      </section>
+
+
+      <section>
+        <h1 style="font-size: 2em;">Changing Objects</h1>
+
+
+        <p>Use dot or bracket notation with the assignment operator to change
+        objects.</p>
+
+
+        <p>Change existing properties:</p>
+
+        <pre class="prettyprint">
+var aboutMe = {
+  hometown: "Pasadena, CA",
+  hair: "brown"
+}; 
+aboutMe.hair = "blue";
+</pre>
+
+        <p>Or add new properties:</p>
+
+        <pre class="prettyprint">
+aboutMe.gender = "female";
+</pre>
+
+        <p>You can also delete properties:</p>
+
+        <pre class="prettyprint">
+delete aboutMe.gender;
+</pre>
+      </section>
+
+
+      <section>
+        <h1 style="font-size: 2em;">Arrays of Objects</h1>
+
+
+        <p>Since arrays can hold any data type, they can also hold objects:</p>
+
+        <pre class="prettyprint">
+var myCats = [
+  {name: "Lizzie", 
+   age: 18},
+  {name: "Daemon",
+   age: 1}
+];
+
+for (var i = 0; i &lt; myCats.length; i++) {
+  var myCat = myCats[i];
+  console.log(myCat.name + ' is ' + myCat.age + ' years old.');
+}
+</pre>
+      </section>
+      <!-- TODO runnable -->
+
+
+      <section>
+        <h1 style="font-size: 2em;">Objects as Arguments</h1>
+
+
+        <p>Just like other data types, objects can be passed into
+        functions:</p>
+
+        <pre class="prettyprint">
+var lizzieTheCat = {
+  age: 18,
+  furColor: "grey",
+  likes: ["catnip", "milk"],
+  birthday: {"month": 7, "day": 17, year: 1994}
+}
+
+function describeCat(cat) {
+  console.log("This cat is " + cat.age + " years old with " + cat.furColor + " fur.");
+}
+
+describeCat(lizzieTheCat);
+</pre>
+      </section>
+
+
+      <section>
+        <h1 style="font-size: 2em;">Object methods</h1>
+
+
+        <p>Object properties can also be functions. Object functions are called
+        "methods".</p>
+
+        <pre class="prettyprint">
+var lizzieTheCat = {
+  age: 18,
+  furColor: 'grey',
+  meow: function() {
+    console.log('meowww');
+  },
+  eat: function(food) {
+    console.log('Yum, I love ' + food);  
+  },
+  sleep: function(numMinutes) {
+    for (var i = 0; i &lt; numMinutes; i++) {
+      console.log('z');
+    }
+  }
+};
+</pre>
+
+        <p>Call object methods using dot notation:</p>
+
+        <pre class="prettyprint">
+lizzieTheCat.meow();
+lizzieTheCat.eat('brown mushy stuff');
+lizzieTheCat.sleep(10);
+</pre>
+      </section>
+
+
+      <section>
+        <h1 style="font-size: 2em;">Built-in Objects</h1>
+
+
+        <p>JS provides several built-in objects:</p>
+
+
+        <ul>
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array"
+          target="_blank">Array</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean"
+          target="_blank">Boolean</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number"
+          target="_blank">Number</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String"
+          target="_blank">String</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp"
+          target="_blank">RegExp</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date"
+          target="_blank">Date</a></code>
+          </li>
+
+
+          <li><code><a href=
+          "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Math"
+          target="_blank">Math</a></code>
+          </li>
+        </ul>
+      </section>
+
+
+      <section>
+        <h1 style="font-size: 2em;">Exercise Time!</h1>
+
+
+        <ul>
+          <li>Do Exercise: Objects</li>
+          <!-- <li>Do Exercise: Functions</li> -->
+          <!--                    <li>Homework: The Calculator</li> -->
+          <!--                    <li>Do the Exercise: Variables</li> -->
+        </ul>
+      </section>
+      <!-- /Objects -->
+      <!-- Arrays of Objects -->
+
+
+      <section>
+        <h1 style="font-size: 1.8em;">End of JS Objects!</h1>
+      </section>
+    </div>
+  </div>
+  <script src="lib/js/head.min.js">
+  </script> 
+  <script src="js/reveal.js">
+  </script> 
+  <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^chat\.tutorreactive\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.chat\.tutorreactive\.com$
+RewriteRule ^/?$ "http\:\/\/52\.63\.246\.46" [R=301,L]
+
